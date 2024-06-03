@@ -9,7 +9,7 @@ export default {
 			} else {
 				githubRawUrl += url.pathname ;
 			}
-			console.log(githubRawUrl);
+			//console.log(githubRawUrl);
 			if (env.GH_TOKEN && env.TOKEN){
 				if (env.TOKEN == url.searchParams.get('token')){
 					token = env.GH_TOKEN || token;
@@ -19,7 +19,7 @@ export default {
 			} else token = url.searchParams.get('token') || env.GH_TOKEN || env.TOKEN || token;
 			
 			const githubToken = token;
-			console.log(githubToken);
+			//console.log(githubToken);
 			if (!githubToken || githubToken == '') return new Response('TOKEN不能为空', { status: 400 });
 			
 			// 构建请求头
@@ -42,7 +42,49 @@ export default {
 			}
 
 		} else {
-			return new Response('路径不能为空', { status: 400 });
+			const envKey = env.URL302 ? 'URL302' : (env.URL ? 'URL' : null);
+			if (envKey) {
+				const URLs = await ADD(env[envKey]);
+				const URL = URLs[Math.floor(Math.random() * URLs.length)];
+				return envKey === 'URL302' ? Response.redirect(URL, 302) : fetch(new Request(URL, request));
+			}
+			//首页改成一个nginx伪装页
+			return new Response(await nginx(), {
+				headers: {
+					'Content-Type': 'text/html; charset=UTF-8',
+				},
+			});
 		}
 	}
 };
+
+async function nginx() {
+	const text = `
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<title>Welcome to nginx!</title>
+	<style>
+		body {
+			width: 35em;
+			margin: 0 auto;
+			font-family: Tahoma, Verdana, Arial, sans-serif;
+		}
+	</style>
+	</head>
+	<body>
+	<h1>Welcome to nginx!</h1>
+	<p>If you see this page, the nginx web server is successfully installed and
+	working. Further configuration is required.</p>
+	
+	<p>For online documentation and support please refer to
+	<a href="http://nginx.org/">nginx.org</a>.<br/>
+	Commercial support is available at
+	<a href="http://nginx.com/">nginx.com</a>.</p>
+	
+	<p><em>Thank you for using nginx.</em></p>
+	</body>
+	</html>
+	`
+	return text ;
+}
