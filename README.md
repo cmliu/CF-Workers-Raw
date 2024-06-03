@@ -23,7 +23,7 @@ https://raw.090227.xyz/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/ma
 ```
 
 ## 方法2：在Workers中设置全局令牌
-如果你经常访问同一个私有仓库，可以在Workers设置中添加一个名为`GH_TOKEN的`变量，值为你的GitHub令牌。这样，你就可以直接访问，无需在URL中每次都包含令牌：
+如果你经常访问同一个私有仓库，可以在Workers设置中添加一个名为`GH_TOKEN`的变量，值为你的GitHub令牌。这样，你就可以直接访问，无需在URL中每次都包含令牌：
 ```url
 https://raw.090227.xyz/cmliu/CF-Workers-Raw/main/_worker.js
 ```
