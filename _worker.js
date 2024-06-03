@@ -44,7 +44,7 @@ export default {
 		} else {
 			const envKey = env.URL302 ? 'URL302' : (env.URL ? 'URL' : null);
 			if (envKey) {
-				const URLs = await ADD(env[envKey]);
+				const URLs = envKey;
 				const URL = URLs[Math.floor(Math.random() * URLs.length)];
 				return envKey === 'URL302' ? Response.redirect(URL, 302) : fetch(new Request(URL, request));
 			}
