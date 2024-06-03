@@ -8,28 +8,28 @@
 
 我们的解决方案是使用Cloudflare Workers作为中间层，它替你安全地处理身份验证，让你可以安全地访问私有文件。
 ## 如何使用？
-假设你的Cloudflare Workers项目部署在`cf-workers-raw.pages.dev`，
+假设你的Cloudflare Workers项目部署在`raw.090227.xyz`，
 
 而你要访问的私有文件是`https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js`。
 
 ## 方法1：通过URL参数传递令牌
 最直接的方法是在URL中添加你的GitHub令牌作为参数：
 ```url
-https://cf-workers-raw.pages.dev/cmliu/CF-Workers-Raw/main/_worker.js?token=你的GitHub令牌
+https://raw.090227.xyz/cmliu/CF-Workers-Raw/main/_worker.js?token=你的GitHub令牌
 ```
 或者，如果你喜欢完整的原始URL：
 ```url
-https://cf-workers-raw.pages.dev/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js?token=你的GitHub令牌
+https://raw.090227.xyz/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js?token=你的GitHub令牌
 ```
 
 ## 方法2：在Workers中设置全局令牌
 如果你经常访问同一个私有仓库，可以在Workers设置中添加一个名为`GH_TOKEN的`变量，值为你的GitHub令牌。这样，你就可以直接访问，无需在URL中每次都包含令牌：
 ```url
-https://cf-workers-raw.pages.dev/cmliu/CF-Workers-Raw/main/_worker.js
+https://raw.090227.xyz/cmliu/CF-Workers-Raw/main/_worker.js
 ```
 或者，如果你喜欢完整的原始URL：
 ```url
-https://cf-workers-raw.pages.dev/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js
+https://raw.090227.xyz/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js
 ```
 
 ## 方法3：添加额外的访问控制（推荐）
@@ -40,11 +40,11 @@ https://cf-workers-raw.pages.dev/https://raw.githubusercontent.com/cmliu/CF-Work
 
 然后，你的URL会是这样的：
 ```url
-https://cf-workers-raw.pages.dev/cmliu/CF-Workers-Raw/main/_worker.js?token=mysecretkey
+https://raw.090227.xyz/cmliu/CF-Workers-Raw/main/_worker.js?token=mysecretkey
 ```
 或者，如果你喜欢完整的原始URL：
 ```url
-https://cf-workers-raw.pages.dev/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js?token=mysecretkey
+https://raw.090227.xyz/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js?token=mysecretkey
 ```
 这种方法提供了双重安全：即使有人猜到了你的自定义密钥，他们仍然无法访问你的GitHub文件，因为GitHub令牌是安全地存储在Workers设置中的。
 
