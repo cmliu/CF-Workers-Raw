@@ -11,11 +11,8 @@ export default {
 			}
 			//console.log(githubRawUrl);
 			if (env.GH_TOKEN && env.TOKEN){
-				if (env.TOKEN == url.searchParams.get('token')){
-					token = env.GH_TOKEN || token;
-				} else {
-					return new Response('TOKEN有误', { status: 400 });
-				}	
+				if (env.TOKEN == url.searchParams.get('token')) token = env.GH_TOKEN || token;
+				else token = url.searchParams.get('token') || token;
 			} else token = url.searchParams.get('token') || env.GH_TOKEN || env.TOKEN || token;
 			
 			const githubToken = token;
