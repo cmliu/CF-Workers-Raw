@@ -70,5 +70,13 @@ GitHub个人访问令牌可以在GitHub设置中的"Developer settings" > "Perso
 - **无法获取文件 检测路径或TOKEN**：文件路径错误或令牌无权访问该文件。
 - **路径不能为空**：你没有指定要访问的文件路径。
 
+# 变量说明
+| 变量名 | 示例 | 必填 | 备注 | 
+|--|--|--|--|
+| GH_TOKEN| ghp_CgmlL2b5J8Z1soNUquc0bZblkbO3gKxhn13t| ❌| 您的GitHub令牌 **token**|
+| TOKEN| nicaibudaowo | ❌| `GH_TOKEN`和`TOKEN`同时存在的时候会作为访问鉴权，单独赋值时的效果与`GH_TOKEN`相同|
+| URL302 | https://t.me/CMLiussss |❌| 主页302跳转 |
+| URL | https://github.com/cmliu/CF-Workers-Raw/blob/main/README.md |❌| 主页伪装 |
+
 # 感谢
 我自己的脑洞、ChatGPT
