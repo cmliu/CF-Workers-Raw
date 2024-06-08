@@ -48,6 +48,32 @@ https://raw.090227.xyz/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/ma
 ```
 这种方法提供了双重安全：即使有人猜到了你的自定义密钥，他们仍然无法访问你的GitHub文件，因为GitHub令牌是安全地存储在Workers设置中的。
 
+## 方法4：添加`GH_NAME`、`GH_REPO`、`GH_BRANCH`变量**隐藏GitHub路径信息**
+
+为了更高的隐私性，你可以设置多个变量：
+- `GH_NAME`：你的GitHub用户名（例如: **cmliu**）
+然后，你的URL会是这样的：
+```url
+https://raw.090227.xyz/CF-Workers-Raw/main/_worker.js?token=sd123123
+```
+
+- `GH_REPO`：你的GitHub仓库名（例如: **CF-Workers-Raw**，必须设置`GH_NAME`变量为前提）
+然后，你的URL会是这样的：
+```url
+https://raw.090227.xyz/main/_worker.js?token=sd123123
+```
+
+- `GH_BRANCH`：你的GitHub仓库名（例如: **main**，必须设置`GH_NAME`和`GH_REPO`变量为前提）
+然后，你的URL会是这样的：
+```url
+https://raw.090227.xyz/_worker.js?token=sd123123
+```
+
+**如您使用完整的原始URL，则以上变量将不会生效！**
+```url
+https://raw.090227.xyz/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/main/_worker.js?token=sd123123
+```
+
 ## 如何设置这些变量？
 
 在你的Cloudflare Workers管理面板中：
@@ -75,8 +101,12 @@ GitHub个人访问令牌可以在GitHub设置中的"Developer settings" > "Perso
 |--|--|--|--|
 | GH_TOKEN| ghp_CgmlL2b5J8Z1soNUquc0bZblkbO3gKxhn13t| ❌| 您的GitHub令牌 **token**|
 | TOKEN| nicaibudaowo | ❌| `GH_TOKEN`和`TOKEN`同时存在的时候会作为访问鉴权，单独赋值时的效果与`GH_TOKEN`相同|
+| GH_NAME| cmliu | ❌| 你的GitHub用户名 |
+| GH_REPO| CF-Workers-Raw | ❌| 你的GitHub仓库(必须设置`GH_NAME`变量为前提) |
+| GH_BRANCH| main | ❌| 你的GitHub仓库(必须设置`GH_NAME`和`GH_REPO`变量为前提) |
 | URL302 | https://t.me/CMLiussss |❌| 主页302跳转 |
 | URL | https://github.com/cmliu/CF-Workers-Raw/blob/main/README.md |❌| 主页伪装 |
+| ERROR | 无法获取文件，检查路径或TOKEN是否正确。 |❌| 自定义错误提示 |
 
 # 感谢
 我自己的脑洞、ChatGPT
