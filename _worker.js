@@ -7,7 +7,14 @@ export default {
 			if (new RegExp(githubRawUrl, 'i').test(url.pathname)){
 				githubRawUrl += url.pathname.split(githubRawUrl)[1];
 			} else {
-				githubRawUrl += url.pathname ;
+				if (env.GH_NAME) {
+					githubRawUrl += '/' + env.GH_NAME;
+					if (env.GH_REPO) {
+						githubRawUrl += '/' + env.GH_REPO;
+						if (env.GH_BRANCH) githubRawUrl += '/' + env.GH_BRANCH;
+					}
+				}
+				githubRawUrl += url.pathname;
 			}
 			//console.log(githubRawUrl);
 			if (env.GH_TOKEN && env.TOKEN){
@@ -39,8 +46,9 @@ export default {
 					},
 				});
 			} else {
+				const errorText = env.ERROR || '无法获取文件，检查路径或TOKEN是否正确。';
 				// 如果请求不成功，返回适当的错误响应
-				return new Response('无法获取文件 检测路径或TOKEN', { status: response.status });
+				return new Response(errorText, { status: response.status });
 			}
 
 		} else {
