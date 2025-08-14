@@ -36,7 +36,7 @@ export default {
 						continue;
 					}
 
-					const [pathPart, requiredToken] = configParts;
+					const [requiredToken, pathPart] = configParts;
 					const normalizedPath = '/' + pathPart.toLowerCase().trim();
 
 					// 精确匹配路径段，防止部分匹配绕过
