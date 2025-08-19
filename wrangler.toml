@@ -1,0 +1,4 @@
+name = "cf-workers-raw"
+main = "_worker.js"
+compatibility_date = "2025-08-18"
+keep_vars = true
