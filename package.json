@@ -1,0 +1,24 @@
+{
+  "name": "cf-workers-raw-edgeone",
+  "version": "2.0.0",
+  "description": "EdgeOne Pages 版本：通过腾讯云 EdgeOne Pages 安全访问 GitHub 私有仓库",
+  "main": "functions/[[path]].js",
+  "scripts": {
+    "dev": "echo '请使用 EdgeOne Pages 控制台进行部署'",
+    "deploy": "echo '请使用 EdgeOne Pages 控制台进行部署'"
+  },
+  "keywords": [
+    "edgeone",
+    "pages",
+    "github",
+    "raw",
+    "private",
+    "repository",
+    "proxy"
+  ],
+  "author": "cmliu",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
