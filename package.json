@@ -1,7 +1,7 @@
 {
-  "name": "cf-workers-raw-edgeone",
-  "version": "2.0.0",
-  "description": "EdgeOne Pages 版本：通过腾讯云 EdgeOne Pages 安全访问 GitHub 私有仓库",
+  "name": "eo-pages-raw",
+  "version": "1.0.0",
+  "description": "通过腾讯云 EdgeOne Pages 安全访问 GitHub 私有仓库的原始文件",
   "main": "functions/[[path]].js",
   "scripts": {
     "dev": "echo '请使用 EdgeOne Pages 控制台进行部署'",
@@ -14,11 +14,18 @@
     "raw",
     "private",
     "repository",
-    "proxy"
+    "proxy",
+    "serverless",
+    "tencent-cloud"
   ],
   "author": "cmliu",
   "license": "MIT",
   "engines": {
     "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cmliu/CF-Workers-Raw.git",
+    "branch": "eo"
   }
 }
