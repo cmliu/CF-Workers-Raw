@@ -2,8 +2,6 @@
 
 🔐 这个项目允许你通过Cloudflare Workers安全地访问GitHub私有仓库中的原始文件，无需直接暴露你的GitHub令牌。
 
-## 🤔 为什么需要这个工具？| 🎯 TOKEN_PATH| `123456@sh,abcdef@admin` | ❌| **🆕 新功能！** 路径专用令牌，格式为`令牌@路径`，多个配置用逗号分隔|
-
 - 📁 你有一些存储在GitHub私有仓库中的重要文件
 - 🔗 你想直接通过URL访问这些文件的原始内容（比如配置文件、数据文件等）
 - 🛡️ 但是，你不想在URL中直接暴露你的GitHub令牌，因为这可能会被他人滥用
@@ -125,7 +123,7 @@ https://raw.090227.xyz/https://raw.githubusercontent.com/cmliu/CF-Workers-Raw/ma
 |--|--|--|--|
 | GH_TOKEN| `ghp_CgmlL2b5J8Z1soNUquc0bZblkbO3gKxhn13t`| ❌| 您的GitHub令牌 **token**|
 | TOKEN| `nicaibudaowo` | ❌| `GH_TOKEN`和`TOKEN`同时存在的时候会作为访问鉴权，单独赋值时的效果与`GH_TOKEN`相同|
-| TOKEN_PATH| `sh@123456,admin@abcdef` | ❌| **🆕 新功能！** 路径专用令牌，格式为`路径@令牌`，多个配置用逗号分隔|
+| TOKEN_PATH| `sh@123456`,`admin@abcdef` | ❌| 路径专用令牌，格式为`路径@令牌`，多个配置用`换行符`分隔|
 | GH_NAME| `cmliu` | ❌| 你的GitHub用户名 |
 | GH_REPO| `CF-Workers-Raw` | ❌| 你的GitHub仓库(必须设置`GH_NAME`变量为前提) |
 | GH_BRANCH| `main` | ❌| 你的GitHub分支(必须设置`GH_NAME`和`GH_REPO`变量为前提) |
