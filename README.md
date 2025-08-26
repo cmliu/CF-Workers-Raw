@@ -122,8 +122,6 @@ https://your-project.pages.dev/file.js?token=your_token
 | GH_NAME| `your-username` | ❌| 你的GitHub用户名 |
 | GH_REPO| `your-repo` | ❌| 你的GitHub仓库名（需要设置GH_NAME）|
 | GH_BRANCH| `main` | ❌| 你的GitHub分支名（需要设置GH_NAME和GH_REPO）|
-| URL302 | `https://t.me/your_channel` |❌| 主页302跳转 |
-| URL | `https://github.com/your-username/your-repo` |❌| 主页伪装 |
 | ERROR | `无法获取文件，检查路径或TOKEN是否正确。` |❌| 自定义错误提示 |
 
 💡 **如何获取GitHub个人访问令牌**：
